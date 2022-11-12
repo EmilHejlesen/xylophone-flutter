@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:audioplayers/audioplayers.dart';
 import 'package:audiofileplayer/audiofileplayer.dart';
 
 void main() => runApp(XylophoneApp());
@@ -10,6 +9,22 @@ void playSound(int noteNumber) {
     ..dispose();
 }
 
+Widget buildKey({Color color, int toneNumber}) {
+  return Expanded(
+    child: TextButton(
+      style: TextButton.styleFrom(
+        backgroundColor: color,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.zero),
+        ),
+      ),
+      onPressed: () {
+        playSound(toneNumber);
+      },
+    ),
+  );
+}
+
 class XylophoneApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,64 +33,14 @@ class XylophoneApp extends StatelessWidget {
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.red,
-                ),
-                onPressed: () {
-                  playSound(1);
-                },
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.orange,
-                ),
-                onPressed: () {
-                  playSound(2);
-                },
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.yellow,
-                ),
-                onPressed: () {
-                  playSound(3);
-                },
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.green,
-                ),
-                onPressed: () {
-                  playSound(4);
-                },
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.teal,
-                ),
-                onPressed: () {
-                  playSound(5);
-                },
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                ),
-                onPressed: () {
-                  playSound(6);
-                },
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.purple,
-                ),
-                onPressed: () {
-                  playSound(7);
-                },
-              ),
+              buildKey(color: Colors.red, toneNumber: 1),
+              buildKey(color: Colors.orange, toneNumber: 2),
+              buildKey(color: Colors.yellow, toneNumber: 3),
+              buildKey(color: Colors.green, toneNumber: 4),
+              buildKey(color: Colors.teal, toneNumber: 5),
+              buildKey(color: Colors.blue, toneNumber: 6),
+              buildKey(color: Colors.purple, toneNumber: 7),
             ],
           ),
         ),
